@@ -21,6 +21,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.List;
+
 @Service
 @Log4j2
 public class TransactionHttpService {
@@ -50,7 +51,7 @@ public class TransactionHttpService {
 
     private List<TransactionDTO> queryTransaction(@NotNull final Long agencia, @NotNull final Long conta) {
 
-        var urlTransaction = String.format(queryTransaction,agencia, conta);
+        var urlTransaction = String.format(queryTransaction, agencia, conta);
         var request = HttpRequest.newBuilder()
                 .GET()
                 .uri(URI.create(urlTransaction))
@@ -58,23 +59,23 @@ public class TransactionHttpService {
 
         try {
             var response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-            if (response.statusCode() == HttpStatus.OK.value()){
+            if (response.statusCode() == HttpStatus.OK.value()) {
                 var transactionDTOS = objectMapper.readValue(response.body(), new TypeReference<List<TransactionDTO>>() {
 
                 });
-                if (transactionDTOS.isEmpty()){
+                if (transactionDTOS.isEmpty()) {
                     throw new NotFoundException(String.format("Não foi possivel encontrar dados para agência %s e conta %s", agencia, conta));
                 }
                 return transactionDTOS;
             }
-        }catch (IOException | InterruptedException e){
+        } catch (IOException | InterruptedException e) {
             log.error(e.getMessage(), e);
         }
         return null;
     }
 
     @Cacheable(value = "transactions", key = "#uuid")
-    public TransactionDTO findById(String uuid){
+    public TransactionDTO findById(String uuid) {
         var urlTransaction = String.format(urlTransactionById, uuid);
         log.info("Buscando uuid - {} de {}", uuid, urlTransaction);
 
@@ -88,16 +89,38 @@ public class TransactionHttpService {
         try {
             var response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             log.info("response status code {}", response.statusCode());
-            if (response.statusCode() == HttpStatus.OK.value()){
+            if (response.statusCode() == HttpStatus.OK.value()) {
                 return objectMapper.readValue(response.body(), TransactionDTO.class);
-            }else if (response.statusCode() == HttpStatus.NOT_FOUND.value()){
-                throw  new NotFoundException(String.format("Não foi possivel encontrar a transação %s", uuid));
+            } else if (response.statusCode() == HttpStatus.NOT_FOUND.value()) {
+                throw new NotFoundException(String.format("Não foi possivel encontrar a transação %s", uuid));
             }
-        }catch (IOException | InterruptedException e){
+        } catch (IOException | InterruptedException e) {
             log.error(e.getMessage(), e);
             throw new InfrastructureException(e);
         }
         return null;
+    }
+
+    public void removeById(String uuid) {
+        var urlTransaction = String.format(urlTransactionById, uuid);
+
+        var request = HttpRequest.newBuilder()
+                .DELETE()
+                .uri(URI.create(
+                        urlTransaction
+                )).setHeader(ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+                .setHeader("Content-type", MediaType.APPLICATION_JSON_VALUE)
+                .build();
+        try {
+            var response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == HttpStatus.NO_CONTENT.value()) {
+                return;
+            }
+        } catch (IOException | InterruptedException e) {
+            log.error(e.getMessage(), e);
+            throw new InfrastructureException(e);
+        }
+        throw new NotFoundException(String.format("Não foi possivel encontrar a transação %s", uuid));
     }
 
 

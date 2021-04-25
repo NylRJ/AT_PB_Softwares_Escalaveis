@@ -1,12 +1,32 @@
-plugins {
-    id 'org.springframework.boot' version '2.4.5'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'java'
+buildscript {
+    ext {
+        springBootVersion = '2.2.6.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.8"
+
+    }
 }
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+apply plugin: 'jacoco'
+
+apply plugin: "org.sonarqube"
+
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 group = 'com.i9developement'
 version = '0.5.5-SNAPSHOT'
 sourceCompatibility = '11'
+targetCompatibility = 11
 
 configurations {
     compileOnly {
@@ -16,16 +36,54 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
 }
-
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
-
 test {
     useJUnitPlatform()
+}
+bootRun {
+    systemProperty "spring.profiles.active", "dev"
+}
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+tasks.register("i9developement") {
+    doLast {
+        print 'Assessment do Moises '
+        println propCoffee
+        println rootProject
+    }
+}
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-webflux')
+    compile('org.springframework.boot:spring-boot-starter-cache')
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    implementation 'org.springframework.security:spring-security-oauth2-resource-server'
+    compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.4.0.RELEASE'
+    compile group: 'com.auth0', name: 'java-jwt', version: '3.10.0'
+    compile('org.springframework.boot:spring-boot-starter-data-redis')
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth', version: '2.1.3.RELEASE'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-sleuth-core', version: '2.1.3.RELEASE'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-sleuth-zipkin', version: '2.1.3.RELEASE'
+    compile ('org.springframework.kafka:spring-kafka')
+    compile 'io.springfox:springfox-swagger2:2.10.0'
+    compile 'io.springfox:springfox-swagger-ui:2.10.0'
+    compile 'io.springfox:springfox-spring-webflux:2.10.0'
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.8'
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
+    ///  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-kubernetes-all', version: '1.1.2.RELEASE'
+
+
+    testImplementation 'io.projectreactor:reactor-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
 }

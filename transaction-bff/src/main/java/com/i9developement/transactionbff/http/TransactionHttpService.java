@@ -3,9 +3,11 @@ package com.i9developement.transactionbff.http;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.i9developement.transactionbff.events.dto.TransactionDTO;
+import com.i9developement.transactionbff.exception.InfrastructureException;
 import com.i9developement.transactionbff.exception.NotFoundException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -67,6 +69,33 @@ public class TransactionHttpService {
             }
         }catch (IOException | InterruptedException e){
             log.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Cacheable(value = "transactions", key = "#uuid")
+    public TransactionDTO findById(String uuid){
+        var urlTransaction = String.format(urlTransactionById, uuid);
+        log.info("Buscando uuid - {} de {}", uuid, urlTransaction);
+
+        var request = HttpRequest.newBuilder()
+                .GET()
+                .uri(URI.create(
+                        urlTransaction
+                )).setHeader(ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+                .setHeader("Content-type", MediaType.APPLICATION_JSON_VALUE)
+                .build();
+        try {
+            var response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            log.info("response status code {}", response.statusCode());
+            if (response.statusCode() == HttpStatus.OK.value()){
+                return objectMapper.readValue(response.body(), TransactionDTO.class);
+            }else if (response.statusCode() == HttpStatus.NOT_FOUND.value()){
+                throw  new NotFoundException(String.format("Não foi possivel encontrar a transação %s", uuid));
+            }
+        }catch (IOException | InterruptedException e){
+            log.error(e.getMessage(), e);
+            throw new InfrastructureException(e);
         }
         return null;
     }

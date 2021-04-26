@@ -26,12 +26,12 @@ import java.util.Locale;
 @EnableAutoConfiguration
 @ComponentScan("com.i9developement")
 @EnableCaching
-public class TransactionBffApplication {
+public class TransactionProxyApplication {
     public static final Locale LOCALE = new Locale("pt",
             "br");
 
     public static void main(String[] args) {
-        SpringApplication.run(TransactionBffApplication.class, args);
+        SpringApplication.run(TransactionProxyApplication.class, args);
     }
 
     @Bean

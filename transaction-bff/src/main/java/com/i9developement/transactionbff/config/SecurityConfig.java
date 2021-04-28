@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 public class SecurityConfig {
 
     public static final String ACTUATOR = "/actuator/**";
-    public static final String SCOPE_CREDITO_LIMITE_TRANSACAO = "SCOPE_CoffeeAndITRole";
+    public static final String SCOPE_CREDITO_LIMITE_TRANSACAO = "SCOPE_i9developementRole";
 
 
     @Bean

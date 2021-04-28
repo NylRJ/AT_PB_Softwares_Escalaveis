@@ -48,7 +48,8 @@ public class KafkaSender {
                     .setHeader(KafkaHeaders.TOPIC, topic)
                     .setHeader(KafkaHeaders.MESSAGE_KEY, HEADER_VALUE)
                     .setHeader(KafkaHeaders.PARTITION_ID, 0)
-                    .setHeader("X-CoffeeAndIT-Header", "transaction" + transactionDTO.getUui())
+                    .setHeader("X-i9develoment-Header", "transaction" + transactionDTO.getUui())
+                    //.setHeader("X-CoffeeAndIT-Header", "transaction" + transactionDTO.getUui())
                     .build();
 
 //            kafkaTemplate.send(message);

@@ -11,15 +11,15 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/auth/realms/bff
-          public-key-location: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkSDFi9BVCwTdmwqvn4LMU/NxajaLnxV60rbIP8p8+t96SOZrEmJrFdsAtxm+Uk7QxjpnT4XUUYE91+vX5DPn5CnAdl8FQjMU7gLIKpwQQqaH7DNhV+qeAwSQ/5W8q5BkJeuZ2HaaAh3YkSvtOM84itBFwWfK99DEV4jtcpUjlZ0S3sPApN4sYveT0tY3g+m+QGPrEGSdzuUaIjvOsH7PAp8D56+hUdditKBi5khWw8IamJ5gvFQGkOcTwUSubN96xJeG4qYjsneq41bvDhL3m68OT+4nKmbR2y7JZu14e5N1bAIuoliE0XG1db8wymaa7RhWWhrFddxtlTTZhcvOHQIDAQAB
+          issuer-uri: http://localhost:8080/auth/realms/i9developement
+          jwk-set-uri: http://localhost:8080/auth/realms/i9developement/protocol/openid-connect/certs
   cloud:
     kubernetes:
       config:
         enabled: false
         enableApi: false
   zipkin:
-    base-url: 127.0.0.1:9411
+    base-url: localhost:9411
 
 
   kafka:

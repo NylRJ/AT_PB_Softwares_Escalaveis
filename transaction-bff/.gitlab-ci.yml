@@ -1,4 +1,4 @@
-include: ''
+include: 'https://github.com/NylRJ/AT_PB_Softwares_Escalaveis/blob/main/template-git/template.yml'
 stages:
   - build
   - test

@@ -1,4 +1,4 @@
-package br.com.coffeeandit.transaction.events.observer;
+package com.i9developement.transactionsvc.events.observer;
 
 public interface TransactionObserver<E> {
 

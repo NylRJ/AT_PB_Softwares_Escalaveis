@@ -30,6 +30,13 @@ public class TransactionController {
     }
 
     @ApiOperation(value = "API para buscar  transações pelo Id", authorizations = {@Authorization(value = "i9developement", scopes = {@AuthorizationScope(scope = "SCOPE_i9developementRole", description = "Role para consumo")})})
+    @GetMapping(value = "/hello", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String hello(String uuid){
+        var data = transactionHttpService.hello(uuid);
+        return data;
+    }
+
+    @ApiOperation(value = "API para buscar  transações pelo Id", authorizations = {@Authorization(value = "i9developement", scopes = {@AuthorizationScope(scope = "SCOPE_i9developementRole", description = "Role para consumo")})})
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Retorno OK com a transação encontrada."),
             @ApiResponse(code = 401, message = "Erro de autenticação dessa API"),
             @ApiResponse(code = 403, message = "Erro de autorização dessa API"),

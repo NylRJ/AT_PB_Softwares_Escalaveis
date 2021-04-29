@@ -10,10 +10,12 @@ import com.i9developement.transactionbff.exception.InfrastructureException;
 import com.i9developement.transactionbff.exception.NotFoundException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import reactor.core.publisher.Flux;
 
 import javax.validation.constraints.NotNull;
@@ -52,6 +54,17 @@ public class TransactionHttpService {
     ) {
         return Flux.fromIterable(queryTransaction(agencia, conta))
                 .limitRate(100).cache(Duration.ofSeconds(3));
+    }
+
+
+
+    @Cacheable(value = "hello", key = "#uuid")
+    public String hello(String uuid){
+
+        System.out.println(uuid);
+        var urlTransaction = String.format(urlTransactionById, uuid);
+        log.info("Buscando uuid - {} de {}", uuid, urlTransaction);
+        return "Hello World";
     }
 
     @Cacheable(value = "transactions", key = "#uuid")

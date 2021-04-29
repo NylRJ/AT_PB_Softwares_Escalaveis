@@ -19,11 +19,11 @@ spring:
         enabled: false
         enableApi: false
   zipkin:
-    base-url: localhost:9411
+    base-url: 127.0.0.1:9411
 
 
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: 127.0.0.1:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -44,7 +44,7 @@ spring:
 
   redis:
     host: localhost
-    port: 6379
+    port: 8081
     time-to-live: 10000
 
   sleuth:
@@ -57,6 +57,7 @@ spring:
     maximumSize: 1024
     allowNullValues: false
     type: redis
+
 
   jackson:
     serialization:

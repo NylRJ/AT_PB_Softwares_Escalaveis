@@ -1,9 +1,9 @@
 package com.i9developement.transactionbff.api.v2;
 
+import com.i9developement.transactionbff.events.kafka.KafkaSender;
 import com.i9developement.transactionbff.events.dto.RequisicaoTransacaoDTO;
 import com.i9developement.transactionbff.events.dto.SituacaoEnum;
 import com.i9developement.transactionbff.events.dto.TransactionDTO;
-import com.i9developement.transactionbff.events.kafka.KafkaSender;
 import com.i9developement.transactionbff.http.TransactionHttpService;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
@@ -102,7 +102,7 @@ public class TransactionControllerV2 {
     @ApiImplicitParams(value = {@ApiImplicitParam(name = "agencia", required = true)})
     @GetMapping(value = "/transactions", produces = MediaType.APPLICATION_JSON_VALUE)
     public Flux<TransactionDTO> queryTransaction(@RequestHeader(name = "Authorization") String bearerToken,
-            @RequestParam("conta") final Long conta, @RequestParam("agencia") final Long agencia
+                                                 @RequestParam("conta") final Long conta, @RequestParam("agencia") final Long agencia
     ) {
         return transactionHttpService.queryTransactionBlock(conta, agencia);
 

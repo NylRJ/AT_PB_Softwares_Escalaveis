@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .httpBasic().disable()
                 .authorizeExchange()
                 .pathMatchers(ACTUATOR, "/swagger-ui.html", "/webjars/**",
-                        "/swagger-resources/**", "/v2/api-docs/**", "/.well-known/**", "/", "/favicon.ico", "/swagger-ui/**").permitAll()
+                        "/swagger-resources/**", "/v2/api-docs/**", "/.well-known/**", "/", "/favicon.ico","/v1/hello" ,"/swagger-ui/**").permitAll()
                 .pathMatchers("/v1/**", "/v2/**").access((authentication, object) -> authentication.flatMap(flatAuthentication ->
                         Mono.just(new AuthorizationDecision(((JwtAuthenticationToken) flatAuthentication).getAuthorities()
                                 .contains(new SimpleGrantedAuthority(SCOPE_CREDITO_LIMITE_TRANSACAO))))

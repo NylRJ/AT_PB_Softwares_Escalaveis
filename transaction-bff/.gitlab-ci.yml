@@ -13,7 +13,7 @@ package:
   stage: build
   image: gradle:jdk11
   tags:
-    - runner-coffeeandit
+    - runner-i9developement
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
   script:
@@ -31,7 +31,7 @@ tests:
   stage: test
   image: gradle:jdk11
   tags:
-    - runner-coffeeandit
+    - runner-i9developement
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
   script:

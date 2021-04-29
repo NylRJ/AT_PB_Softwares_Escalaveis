@@ -1,7 +1,7 @@
-package br.com.coffeeandit.transaction.http;
+package com.i9developement.transactionsvc.http;
 
-import br.com.coffeeandit.transaction.business.TransactionDomain;
-import br.com.coffeeandit.transaction.domain.TransactionDTO;
+import com.i9developement.transactionsvc.business.TransactionDomain;
+import com.i9developement.transactionsvc.domain.TransactionDTO;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;

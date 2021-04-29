@@ -1,7 +1,7 @@
 package com.i9developement.transactionsvc.events.observer;
 
-import br.com.coffeeandit.transaction.domain.TransactionDTO;
-import br.com.coffeeandit.transaction.http.SlackAlertService;
+import com.i9developement.transactionsvc.domain.TransactionDTO;
+import com.i9developement.transactionsvc.http.SlackAlertService;
 import org.springframework.stereotype.Service;
 
 @Service

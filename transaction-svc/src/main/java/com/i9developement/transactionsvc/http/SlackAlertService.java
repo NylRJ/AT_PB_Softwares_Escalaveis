@@ -1,18 +1,15 @@
-package br.com.coffeeandit.transaction.http;
+package com.i9developement.transactionsvc.http;
 
-import br.com.coffeeandit.transaction.domain.SlackMessage;
-import br.com.coffeeandit.transaction.domain.TemplateSlack;
-import br.com.coffeeandit.transaction.domain.TransactionDTO;
+import com.i9developement.transactionsvc.domain.SlackMessage;
+import com.i9developement.transactionsvc.domain.TemplateSlack;
+import com.i9developement.transactionsvc.domain.TransactionDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.sleuth.annotation.NewSpan;

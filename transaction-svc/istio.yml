@@ -41,7 +41,7 @@ spec:
       serviceAccountName: sa-transaction-svc
       containers:
         - name: transaction-svc
-          image: coffeeandit/transaction-svc:0.6.0-SNAPSHOT
+          image: i9development/transaction-svc:0.6.0-SNAPSHOT
           imagePullPolicy: Always
           ports:
             - containerPort: 8083
@@ -70,7 +70,7 @@ spec:
       serviceAccountName: sa-transaction-svc
       containers:
         - name: transaction-svc
-          image: coffeeandit/transaction-svc:0.6.0-SNAPSHOT
+          image: i9development/transaction-svc:0.6.0-SNAPSHOT
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8083

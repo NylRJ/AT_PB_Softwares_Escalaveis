@@ -1,12 +1,13 @@
 package com.i9developement.transactionsvc.events.kafka;
 
 
-import br.com.coffeeandit.transaction.business.TransactionDomain;
-import br.com.coffeeandit.transaction.domain.SituacaoEnum;
-import br.com.coffeeandit.transaction.domain.TransactionDTO;
-import br.com.coffeeandit.transaction.events.observer.TransactionObserverService;
+import com.i9developement.transactionsvc.business.TransactionDomain;
+import com.i9developement.transactionsvc.domain.SituacaoEnum;
+import com.i9developement.transactionsvc.domain.TransactionDTO;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.i9developement.transactionsvc.events.observer.TransactionObserverService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.sleuth.annotation.ContinueSpan;
 import org.springframework.kafka.annotation.KafkaListener;

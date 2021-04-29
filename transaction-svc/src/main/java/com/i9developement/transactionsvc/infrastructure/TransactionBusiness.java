@@ -1,9 +1,9 @@
-package br.com.coffeeandit.transaction.infrastructure;
+package com.i9developement.transactionsvc.infrastructure;
 
-import br.com.coffeeandit.transaction.config.DomainBusinessException;
-import br.com.coffeeandit.transaction.domain.SituacaoEnum;
-import br.com.coffeeandit.transaction.domain.TransactionDTO;
-import br.com.coffeeandit.transaction.repository.DynamoRepository;
+import com.i9developement.transactionsvc.config.DomainBusinessException;
+import com.i9developement.transactionsvc.domain.SituacaoEnum;
+import com.i9developement.transactionsvc.domain.TransactionDTO;
+import com.i9developement.transactionsvc.repository.DynamoRepository;
 import com.amazonaws.services.dynamodbv2.document.DeleteItemOutcome;
 import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.UpdateItemOutcome;

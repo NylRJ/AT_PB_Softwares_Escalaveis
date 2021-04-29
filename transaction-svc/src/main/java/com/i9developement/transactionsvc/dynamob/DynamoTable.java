@@ -1,4 +1,4 @@
-package br.com.coffeeandit.transaction.dynamob;
+package com.i9developement.transactionsvc.dynamob;
 
 import com.amazonaws.services.dynamodbv2.document.Table;
 

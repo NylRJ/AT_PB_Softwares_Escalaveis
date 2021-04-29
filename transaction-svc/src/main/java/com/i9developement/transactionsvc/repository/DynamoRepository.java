@@ -1,20 +1,20 @@
-package br.com.coffeeandit.transaction.repository;
+package com.i9developement.transactionsvc.repository;
 
-import br.com.coffeeandit.transaction.domain.*;
-import br.com.coffeeandit.transaction.dynamob.DynamoTable;
-import br.com.coffeeandit.transaction.dynamob.InsertableItem;
+import com.i9developement.transactionsvc.domain.*;
+import com.i9developement.transactionsvc.dynamob.DynamoTable;
+import com.i9developement.transactionsvc.dynamob.InsertableItem;
 import com.amazonaws.services.dynamodbv2.document.*;
 import com.amazonaws.services.dynamodbv2.document.spec.DeleteItemSpec;
 import com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec;
 import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
 import com.amazonaws.services.dynamodbv2.model.ReturnValue;
+import com.i9developement.transactionsvc.domain.TransactionDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.sleuth.annotation.NewSpan;
 import org.springframework.cloud.sleuth.annotation.SpanTag;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.function.Function;
 

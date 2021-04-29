@@ -29,43 +29,43 @@ public class TransactionDTO implements Serializable {
     @NotNull
     private LocalDateTime data;
     @NotNull
-    private br.com.coffeeandit.transaction.domain.Conta conta;
+    private Conta conta;
     @NotNull
-    private br.com.coffeeandit.transaction.domain.BeneficiatioDto beneficiario;
+    private BeneficiatioDto beneficiario;
     @NotNull
-    private br.com.coffeeandit.transaction.domain.TipoTransacao tipoTransacao;
+    private TipoTransacao tipoTransacao;
     @ApiModelProperty(value = "Identificador único da transação", required = true)
     private UUID uui;
     @ApiModelProperty(value = "Situação da Transação", required = false)
     @NotNull
-    private br.com.coffeeandit.transaction.domain.SituacaoEnum situacao;
+    private SituacaoEnum situacao;
 
     public void naoAnalisada() {
-        setSituacao(br.com.coffeeandit.transaction.domain.SituacaoEnum.NAO_ANALISADA);
+        setSituacao(SituacaoEnum.NAO_ANALISADA);
     }
 
     public void analisada() {
-        setSituacao(br.com.coffeeandit.transaction.domain.SituacaoEnum.ANALISADA);
+        setSituacao(SituacaoEnum.ANALISADA);
     }
 
     public void rejeitada() {
-        setSituacao(br.com.coffeeandit.transaction.domain.SituacaoEnum.REJEITADA);
+        setSituacao(SituacaoEnum.REJEITADA);
     }
 
     public void suspeitaFraude() {
-        setSituacao(br.com.coffeeandit.transaction.domain.SituacaoEnum.EM_SUSPEITA_FRAUDE);
+        setSituacao(SituacaoEnum.EM_SUSPEITA_FRAUDE);
     }
 
     public void analiseHumana() {
-        setSituacao(br.com.coffeeandit.transaction.domain.SituacaoEnum.EM_ANALISE_HUMANA);
+        setSituacao(SituacaoEnum.EM_ANALISE_HUMANA);
     }
 
     public void aprovada() {
-        setSituacao(br.com.coffeeandit.transaction.domain.SituacaoEnum.APROVADA);
+        setSituacao(SituacaoEnum.APROVADA);
     }
 
     public boolean isAnalisada() {
 
-        return getSituacao().equals(br.com.coffeeandit.transaction.domain.SituacaoEnum.ANALISADA);
+        return getSituacao().equals(SituacaoEnum.ANALISADA);
     }
 }

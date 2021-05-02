@@ -20,7 +20,7 @@ services:
     container_name: pgadmin_container
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: coffeeandit@coffeeandit.com
+      PGADMIN_DEFAULT_EMAIL: moises.souza@gmail.com
       PGADMIN_DEFAULT_PASSWORD: 1234567
     volumes:
       - pgadmin:/root/.pgadmin

@@ -19,7 +19,7 @@ spring:
   application:
     name: transaction-svc
   kafka:
-    bootstrap-servers: 35.245.200.121:9092
+    bootstrap-servers: localhost:9092
     consumer:
       group-id: transaction-svc
       key-serializer: org.apache.kafka.common.serialization.StringDeserializer
@@ -37,7 +37,7 @@ spring:
       missing-topics-fatal: false
       ack-mode: MANUAL_IMMEDIATE
   zipkin:
-    base-url: http://35.245.200.121:9411
+    base-url: localhost:9411
   sleuth:
     sampler:
       probability: 1.0

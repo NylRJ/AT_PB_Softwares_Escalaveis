@@ -15,7 +15,7 @@ import java.util.List;
 public class JacksonConfiguration {
 
     @Autowired
-    private void registerSerializersDeserializers(List<ObjectMapper> objectMappers) {
+    private void registerSerializersDeserializers( List<ObjectMapper> objectMappers) {
         SimpleModule simpleModule = new SimpleModule();
         var dateTimeFormatter = DateTimeFormatter.ISO_DATE_TIME;
         simpleModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(dateTimeFormatter));

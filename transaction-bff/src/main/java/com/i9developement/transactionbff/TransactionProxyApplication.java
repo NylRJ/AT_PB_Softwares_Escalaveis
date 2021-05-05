@@ -23,7 +23,6 @@ import java.util.Locale;
 @EnableWebFlux
 @EnableSwagger2WebFlux
 @EnableWebFluxSecurity
-@EnableAutoConfiguration
 @ComponentScan("com.i9developement")
 @EnableCaching
 public class TransactionProxyApplication {

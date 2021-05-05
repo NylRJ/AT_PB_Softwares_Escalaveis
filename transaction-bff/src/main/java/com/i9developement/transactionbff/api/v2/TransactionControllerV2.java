@@ -1,9 +1,10 @@
 package com.i9developement.transactionbff.api.v2;
 
-import com.i9developement.transactionbff.events.kafka.KafkaSender;
+
 import com.i9developement.transactionbff.events.dto.RequisicaoTransacaoDTO;
 import com.i9developement.transactionbff.events.dto.SituacaoEnum;
 import com.i9developement.transactionbff.events.dto.TransactionDTO;
+import com.i9developement.transactionbff.events.kafka.KafkaSender;
 import com.i9developement.transactionbff.http.TransactionHttpService;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
 
 import javax.validation.Valid;
 import java.io.FileNotFoundException;
@@ -61,6 +63,7 @@ public class TransactionControllerV2 {
                 .doOnError(throwable -> log.error(throwable.getLocalizedMessage()))
                 .doFirst(() -> changeStatusUnanalyzed(transactionDTO))
                 .retry(numberRetries);
+
     }
 
     @ApiOperation(value = "API para alterar a situação de transação financeira", authorizations = {@Authorization(value = "i9developement", scopes = {@AuthorizationScope(scope = "SCOPE_i9developementRole", description = "Role para consumo")})})

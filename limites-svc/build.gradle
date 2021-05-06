@@ -33,6 +33,7 @@ dependencies {
     compile group: 'org.springframework.cloud', name: 'spring-cloud-sleuth-zipkin', version: '2.+'
     compile group: 'org.postgresql', name: 'postgresql', version: '42.2.12'
     compile('org.flywaydb:flyway-core')
+    compile 'com.h2database:h2'
     implementation ('org.springframework.kafka:spring-kafka')
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

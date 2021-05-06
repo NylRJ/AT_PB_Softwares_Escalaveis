@@ -17,6 +17,9 @@ jacocoTestReport {
 test {
     useJUnitPlatform()
 }
+bootRun {
+    systemProperty "spring.profiles.active", "dev"
+}
 
 test.finalizedBy jacocoTestReport
 
@@ -24,6 +27,7 @@ test.finalizedBy jacocoTestReport
 group = 'com.i9developement'
 version = '0.6.0-SNAPSHOT'
 sourceCompatibility = '11'
+targetCompatibility = 11
 
 configurations {
     compileOnly {

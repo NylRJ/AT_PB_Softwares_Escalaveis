@@ -19,9 +19,9 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(new ApiInfo("Workshop CoffeeAndIT", "API ", "1.0.1", "",
-                        new Contact("coffeeandit", "http://www.coffeeandit.com.br", "coffeeandit@coffeeandit.com.br")
-                        , "CoffeeAndIT", "", new ArrayList<>()
+                .apiInfo(new ApiInfo("AT Moises i9development", "API ", "1.0.1", "",
+                        new Contact("i9development", "http://www.i9development.com.br", "i9development@i9development.com.br")
+                        , "i9development", "", new ArrayList<>()
                 ))
                 .select()
                 .apis(RequestHandlerSelectors.any())

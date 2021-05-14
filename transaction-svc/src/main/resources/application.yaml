@@ -19,25 +19,18 @@ spring:
   application:
     name: transaction-svc
   kafka:
-    bootstrap-servers: 35.245.200.121:9092
+    bootstrap-servers: 127.0.0.1:9092
     consumer:
       group-id: transaction-svc
       key-serializer: org.apache.kafka.common.serialization.StringDeserializer
       value-serializer: org.apache.kafka.common.serialization.StringDeserializer
       auto-offset-reset: latest
       enable-auto-commit:  false
-      properties:
-        security:
-          protocol: SASL_PLAINTEXT
-        sasl:
-          mechanism: PLAIN
-          jaas:
-            config: org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="jzPNJp85";
     listener:
       missing-topics-fatal: false
       ack-mode: MANUAL_IMMEDIATE
   zipkin:
-    base-url: http://35.245.200.121:9411
+    base-url: http://localhost:9411
   sleuth:
     sampler:
       probability: 1.0

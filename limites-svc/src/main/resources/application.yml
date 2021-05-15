@@ -23,9 +23,9 @@ spring:
       show-sql: true
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://localhost:5432/limites
+    username: keycloak
+    password: password
   kafka:
     bootstrap-servers: localhost:9092
     consumer:

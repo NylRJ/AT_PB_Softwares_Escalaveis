@@ -14,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class TransactionDomain {
     public static final int LIMITE_MAXIMO = 10000;
-    private TransactionBusiness transactionBusiness;
+    private  TransactionBusiness transactionBusiness;
 
 
     public boolean analisarTransacao(@Valid final TransactionDTO transactionDTO) {
@@ -22,7 +22,7 @@ public class TransactionDomain {
         final Optional<TransactionDTO> optionalTransactionDTO = buscarTransacao(transactionDTO);
         if (optionalTransactionDTO.isPresent()) {
             final TransactionDTO dto = optionalTransactionDTO.get();
-            if (dto.getValor().compareTo(BigDecimal.valueOf(LIMITE_MAXIMO)) < 0) {
+              if (dto.getValor().compareTo(BigDecimal.valueOf(LIMITE_MAXIMO)) < 0) {
                 dto.analisada();
                 criarTransacao(dto);
                 return true;

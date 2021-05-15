@@ -10,15 +10,16 @@ buildscript {
 
     }
 }
+
 plugins {
-    id 'org.springframework.boot' version '2.2.6.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'org.springframework.boot' version '2.4.5'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     id 'idea'
     id "org.sonarqube" version "2.8"
     id 'jacoco'
-
 }
+
 
 jacocoTestReport {
     reports {
@@ -27,21 +28,21 @@ jacocoTestReport {
         html.destination file("${buildDir}/jacocoHtml")
     }
 }
-
-bootRun {
-    systemProperty "spring.profiles.active", "dev"
-}
-
 test {
     useJUnitPlatform()
 }
 
 test.finalizedBy jacocoTestReport
 
-
 group = 'com.i9developement'
-sourceCompatibility = '1.11'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
 
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
 
 repositories {
     mavenCentral()
@@ -49,22 +50,39 @@ repositories {
     maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
 
     maven { url 'https://repo.spring.io/milestone' }
+
+}
+
+ext {
+    set('springCloudVersion', "2020.0.2")
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     compile group: 'com.github.derjust', name: 'spring-data-dynamodb', version: '5.1.+'
     compile("org.springframework.boot:spring-boot-starter-actuator")
-    compile group: 'com.amazonaws', name: 'aws-java-sdk-dynamodb', version: '1.11.560'
 
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-dynamodb', version: '1.11.560'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth', version: '2.+'
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-sleuth-core', version: '2.+'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-sleuth-zipkin', version: '2.+'
+
+
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
+    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+    implementation 'org.springframework.kafka:spring-kafka'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
+
 
     compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.14.1'
     compile group: 'org.springframework', name: 'spring-aspects', version: '5.+'
     compile('org.springframework.boot:spring-boot-starter-webflux')
-    implementation ('org.springframework.kafka:spring-kafka')
 
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
@@ -75,8 +93,14 @@ dependencies {
     compile 'io.springfox:springfox-swagger2:3.0.0-SNAPSHOT'
     compile 'io.springfox:springfox-swagger-ui:3.0.0-SNAPSHOT'
     compile 'io.springfox:springfox-spring-webflux:3.0.0-SNAPSHOT'
-    compileOnly 'org.projectlombok:lombok:1.18.10'
-    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+
+
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
 
 test {

@@ -1,10 +1,10 @@
 package com.i9developement.transactionsvc;
 
-import com.i9developement.transactionsvc.events.observer.SlackTransactionObserver;
-import com.i9developement.transactionsvc.events.observer.TransactionObserverService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.i9developement.transactionsvc.events.observer.SlackTransactionObserver;
+import com.i9developement.transactionsvc.events.observer.TransactionObserverService;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -13,6 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Primary;
 import org.springframework.kafka.annotation.EnableKafka;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -22,6 +23,7 @@ import java.util.Locale;
 @ComponentScan("com.i9developement")
 @EnableKafka
 @EnableAspectJAutoProxy(proxyTargetClass = true)
+@EnableSwagger2WebFlux
 public class TransactionServiceApplication {
 
     public static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";

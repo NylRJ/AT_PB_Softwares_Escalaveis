@@ -4,10 +4,8 @@ import com.i9developement.transactionsvc.config.NotFoundResponse;
 import com.i9developement.transactionsvc.domain.AlteracaoSituacaoDTO;
 import com.i9developement.transactionsvc.domain.TransactionDTO;
 import com.i9developement.transactionsvc.infrastructure.TransactionBusiness;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -25,6 +23,7 @@ import java.util.List;
 @RestController
 @Slf4j
 @RequestMapping("/v1")
+@Api(tags = "/v1/transactions", value = "Grupo de API's para manipulação de transações financeiras")
 public class TransactionController {
 
     public static final String TRANSACTION_EVENT = "transaction-event";
@@ -35,6 +34,10 @@ public class TransactionController {
     private TransactionBusiness transactionBusiness;
     @Value("${app.intervalTransaction}")
     private int intervalTransaction;
+
+    public TransactionController(){
+
+    }
 
     public TransactionController(final TransactionBusiness transactionBusiness) {
         this.transactionBusiness = transactionBusiness;

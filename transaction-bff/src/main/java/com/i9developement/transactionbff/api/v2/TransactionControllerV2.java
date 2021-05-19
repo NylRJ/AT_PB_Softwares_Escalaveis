@@ -93,6 +93,7 @@ public class TransactionControllerV2 {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    //alterar status para não analisado
     private void changeStatusUnanalyzed(TransactionDTO transactionDTO) {
         transactionDTO.naoAnalisada();
     }

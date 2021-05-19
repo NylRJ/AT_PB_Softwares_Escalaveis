@@ -2,6 +2,7 @@ package com.i9developement.transactionsvc.http;
 
 import com.i9developement.transactionsvc.business.TransactionDomain;
 import com.i9developement.transactionsvc.domain.TransactionDTO;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -12,11 +13,17 @@ import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
 
+
+
+@AllArgsConstructor
 @RestController
 @Slf4j
-@RequestMapping("/v1/transaction")
-@AllArgsConstructor
+@RequestMapping("/v2")
+@Api(tags = "/v2/transactions", value = "Grupo de API's para manipulação de transações financeiras")
 public class TransactionAPI {
+
+
+    public TransactionAPI(){}
 
     private TransactionDomain transactionDomain;
 

@@ -23,7 +23,7 @@ spring:
 
 
   kafka:
-    bootstrap-servers: 127.0.0.1:9092
+    bootstrap-servers: localhost:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -31,12 +31,6 @@ spring:
       client-id: transaction-producer-local
       transaction-id-prefix: ted
       properties:
-        security:
-          protocol: SASL_PLAINTEXT
-        sasl:
-          mechanism: PLAIN
-          jaas:
-            config: org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="jzPNJp85";
         enable:
           idempotence: true
         transactional:

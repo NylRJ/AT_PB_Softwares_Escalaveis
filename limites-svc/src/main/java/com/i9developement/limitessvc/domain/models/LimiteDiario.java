@@ -1,4 +1,4 @@
-package com.i9developement.limitessvc.domain;
+package com.i9developement.limitessvc.domain.models;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,9 +14,7 @@ import java.time.LocalDate;
 public class LimiteDiario {
 
     @Id
-    @SequenceGenerator(name="limite_diario_seq",
-            sequenceName="limite_diario_seq",
-            allocationSize=1)
+    @SequenceGenerator(name="limite_diario_seq",sequenceName="limite_diario_seq",allocationSize=1)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long agencia;

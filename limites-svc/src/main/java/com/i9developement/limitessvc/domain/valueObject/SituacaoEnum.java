@@ -1,4 +1,4 @@
-package com.i9developement.limitessvc.dto;
+package com.i9developement.limitessvc.domain.valueObject;
 
 public enum SituacaoEnum {
 

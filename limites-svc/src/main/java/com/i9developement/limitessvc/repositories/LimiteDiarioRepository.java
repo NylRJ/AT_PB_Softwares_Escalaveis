@@ -1,5 +1,6 @@
-package com.i9developement.limitessvc.domain;
+package com.i9developement.limitessvc.repositories;
 
+import com.i9developement.limitessvc.domain.models.LimiteDiario;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

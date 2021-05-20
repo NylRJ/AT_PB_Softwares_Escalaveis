@@ -1,6 +1,9 @@
-package com.i9developement.limitessvc.dto;
+package com.i9developement.limitessvc.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.i9developement.limitessvc.domain.models.Conta;
+import com.i9developement.limitessvc.domain.valueObject.SituacaoEnum;
+import com.i9developement.limitessvc.domain.valueObject.TipoTransacao;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

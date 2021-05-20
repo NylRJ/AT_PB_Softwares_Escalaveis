@@ -34,13 +34,6 @@ spring:
       value-serializer: org.apache.kafka.common.serialization.StringDeserializer
       auto-offset-reset: latest
       enable-auto-commit:  true
-      properties:
-        security:
-          protocol: SASL_PLAINTEXT
-        sasl:
-          mechanism: PLAIN
-          jaas:
-            config: org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="jzPNJp85";
       max-poll-records: 1
 
 

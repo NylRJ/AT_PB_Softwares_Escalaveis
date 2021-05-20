@@ -121,6 +121,7 @@ public class TransactionController {
 
     @GetMapping(value = "/transactions/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public Mono<TransactionDTO> findById(@PathVariable("id") String uuid, @RequestHeader(name = "content-type", defaultValue = MediaType.APPLICATION_JSON_VALUE) String contentType) {
+        //Todo:postgresRepositoy
         var item = transactionBusiness.retrieveItem(uuid);
         if (item.isPresent()) {
             return Mono.just(item.get());

@@ -29,11 +29,15 @@ public class LimiteBusiness {
     @Value("${limite.valorTotal}")
     private BigDecimal valorTotal;
 
+
     @NewSpan
-    public void limiteDiario(final TransactionDTO transactionDTO) {
-        var limiteDiario = limiteDiarioRepository.findByAgenciaAndContaAndData(
+    public TransactionDTO limiteDiario(final TransactionDTO transactionDTO) {
+        LimiteDiario limiteDiario;
+         limiteDiario = limiteDiarioRepository.findByAgenciaAndContaAndData(
                 transactionDTO.getConta().getCodigoAgencia(),
                 transactionDTO.getConta().getCodigoConta(), LocalDate.now());
+
+
 
         if (Objects.isNull(limiteDiario)) {
             limiteDiario = new LimiteDiario();
@@ -61,9 +65,10 @@ public class LimiteBusiness {
             log.info("Transação analisada {}", transactionDTO);
             limiteDiario.setValor(limiteDiario.getValor().subtract(transactionDTO.getValor()));
             limiteDiarioRepository.save(limiteDiario);
+
         }
         kafkaSender.send(transactionDTO);
-
+        return transactionDTO;
     }
 }
 

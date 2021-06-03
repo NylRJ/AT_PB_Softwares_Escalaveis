@@ -49,10 +49,11 @@ public class KafkaSender {
                     .setHeader(KafkaHeaders.MESSAGE_KEY, HEADER_VALUE)
                     .setHeader(KafkaHeaders.PARTITION_ID, 0)
                     .setHeader("X-i9develoment-Header", "transaction" + transactionDTO.getUui())
-                    //.setHeader("X-CoffeeAndIT-Header", "transaction" + transactionDTO.getUui())
                     .build();
-
-//            kafkaTemplate.send(message);
+            System.out.println("-----------------------------");
+            System.out.println(message);
+            System.out.println("-----------------------------");
+            kafkaTemplate.send(message);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

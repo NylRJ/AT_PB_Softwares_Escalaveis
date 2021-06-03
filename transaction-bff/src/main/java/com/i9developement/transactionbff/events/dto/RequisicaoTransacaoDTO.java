@@ -7,7 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
-
+//Princípio OCP - Usando Métodos de Extensão
 @Getter
 @Setter
 @ToString

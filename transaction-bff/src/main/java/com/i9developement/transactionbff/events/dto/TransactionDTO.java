@@ -21,7 +21,7 @@ import java.util.UUID;
 @EqualsAndHashCode(of = "uui")
 @ToString
 @ApiModel(value = "TransactionDTO", description = "Objeto de transporte para o envio de uma promessa de transação")
-public class TransactionDTO implements Serializable {
+public class TransactionDTO  implements Serializable {
 
     private static final long serialVersionUID = 2806421523585360625L;
 

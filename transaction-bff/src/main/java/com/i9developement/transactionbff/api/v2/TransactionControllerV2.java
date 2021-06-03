@@ -52,7 +52,9 @@ public class TransactionControllerV2 {
             @ApiResponse(code = 404, message = "Recurso não encontrado")}
     )
     public Mono<TransactionDTO> save(@RequestHeader(name = "Authorization") String bearerToken, @Valid @RequestBody RequisicaoTransacaoDTO transactionDTO) {
-
+        System.out.println("--------------------------------------");
+        System.out.println(transactionDTO);
+        System.out.println(transactionDTO.getUui());
         return Mono.just(
                 kafkaSender.send(transactionDTO)
 
@@ -85,6 +87,7 @@ public class TransactionControllerV2 {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 
     }
+
     @ApiOperation(value = "API para remover as transações persistidas", authorizations = {@Authorization(value = "i9developement", scopes = {@AuthorizationScope(scope = "SCOPE_i9developementRole", description = "Role para consumo")})})
     @DeleteMapping(value = "/transactions/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity deleteById(@RequestHeader(name = "Authorization") String bearerToken, @PathVariable("id") String uuid, @RequestHeader(name = "content-type", defaultValue = MediaType.APPLICATION_JSON_VALUE) String contentType) {

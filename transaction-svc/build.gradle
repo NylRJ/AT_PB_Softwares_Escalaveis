@@ -28,9 +28,6 @@ jacocoTestReport {
         html.destination file("${buildDir}/jacocoHtml")
     }
 }
-test {
-    useJUnitPlatform()
-}
 
 test.finalizedBy jacocoTestReport
 
@@ -59,10 +56,12 @@ ext {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    compile group: 'com.github.derjust', name: 'spring-data-dynamodb', version: '5.1.+'
+
     compile("org.springframework.boot:spring-boot-starter-actuator")
 
     compile group: 'com.amazonaws', name: 'aws-java-sdk-dynamodb', version: '1.11.560'
+    compile group: 'com.github.derjust', name: 'spring-data-dynamodb', version: '5.1.+'
+
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth', version: '2.+'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-sleuth-zipkin', version: '2.+'
 

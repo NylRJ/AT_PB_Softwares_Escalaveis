@@ -18,8 +18,8 @@ import javax.validation.Valid;
 @AllArgsConstructor
 @RestController
 @Slf4j
-@RequestMapping("/v2")
-@Api(tags = "/v2/transactions", value = "Grupo de API's para manipulação de transações financeiras")
+@RequestMapping("/v1")
+@Api(tags = "/v1/transactions", value = "Grupo de API's para manipulação de transações financeiras")
 public class TransactionAPI {
 
 

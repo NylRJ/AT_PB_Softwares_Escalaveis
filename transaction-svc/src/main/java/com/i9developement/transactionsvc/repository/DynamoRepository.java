@@ -43,6 +43,7 @@ public class DynamoRepository implements DynamoTable, InsertableItem<Transaction
     private Table tableTransacao;
     private DynamoDB dynamoDB;
 
+    //Carregando detalhes da tabela
     private Function<Item, TransactionDTO> itemTransactionDTOFunction = item -> {
         var transacaoDto = new TransactionDTO();
         transacaoDto.setValor(item.getNumber(VALOR));

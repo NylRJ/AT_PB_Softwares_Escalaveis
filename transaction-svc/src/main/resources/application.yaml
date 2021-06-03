@@ -3,8 +3,8 @@ server:
 
 amazon:
   aws:
-    accesskey: AKIAQW7646XIP2MZSL2T
-    secretkey: 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
+    accesskey: AKIA3WP3KJDNAWJLQU7P
+    secretkey: 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
 
 
 management:

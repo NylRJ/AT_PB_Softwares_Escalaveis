@@ -66,11 +66,11 @@ public class DynamoRepository implements DynamoTable, InsertableItem<Transaction
         beneficiario.setCPF(item.getLong(CPF));
         beneficiario.setNomeFavorecido(item.getString(NOME_FAVORECIDO));
         transacaoDto.setBeneficiario(beneficiario);
-
-
+        System.out.println("-------------------------------------------------------------------------");
+        System.out.println(transacaoDto);
+        System.out.println("-------------------------------------------------------------------------");
         return transacaoDto;
     };
-
 
     public DynamoRepository(final DynamoDB dynamoDB) {
         this.dynamoDB = dynamoDB;

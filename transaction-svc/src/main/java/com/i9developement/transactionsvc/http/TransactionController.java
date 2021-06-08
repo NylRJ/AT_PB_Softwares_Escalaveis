@@ -20,10 +20,10 @@ import javax.validation.Valid;
 import java.time.Duration;
 import java.util.List;
 
+
 @RestController
 @Slf4j
 @RequestMapping("/v1")
-@Api(tags = "/v1/transactions", value = "Grupo de API's para manipulação de transações financeiras")
 public class TransactionController {
 
     public static final String TRANSACTION_EVENT = "transaction-event";
@@ -35,12 +35,11 @@ public class TransactionController {
     @Value("${app.intervalTransaction}")
     private int intervalTransaction;
 
-    public TransactionController(){
-
-    }
 
     public TransactionController(final TransactionBusiness transactionBusiness) {
         this.transactionBusiness = transactionBusiness;
+
+
     }
 
     @ApiOperation(value = "API responsável por retornar um SSE com Flux com as transações por período agência e conta.")
@@ -117,18 +116,5 @@ public class TransactionController {
         return ResponseEntity.ok("V2");
 
 
-    }
-
-    @GetMapping(value = "/transactions/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<TransactionDTO> findById(@PathVariable("id") String uuid, @RequestHeader(name = "content-type", defaultValue = MediaType.APPLICATION_JSON_VALUE) String contentType) {
-        //Todo:postgresRepositoy
-        System.out.println("-----------------------------------------");
-        System.out.println(uuid);
-
-        var item = transactionBusiness.retrieveItem(uuid);
-        if (item.isPresent()) {
-            return Mono.just(item.get());
-        }
-        throw new NotFoundResponse("Transação não encontrada");
     }
 }

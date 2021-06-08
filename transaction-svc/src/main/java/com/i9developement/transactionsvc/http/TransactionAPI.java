@@ -15,15 +15,11 @@ import javax.validation.Valid;
 
 
 
-@AllArgsConstructor
 @RestController
 @Slf4j
-@RequestMapping("/v1")
-@Api(tags = "/v1/transactions", value = "Grupo de API's para manipulação de transações financeiras")
+@RequestMapping("/v1/transaction")
+@AllArgsConstructor
 public class TransactionAPI {
-
-
-    public TransactionAPI(){}
 
     private TransactionDomain transactionDomain;
 

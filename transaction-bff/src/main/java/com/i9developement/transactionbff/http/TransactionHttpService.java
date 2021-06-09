@@ -84,6 +84,10 @@ public class TransactionHttpService {
             var response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             log.info("response status code {}", response.statusCode());
             if (response.statusCode() == HttpStatus.OK.value()) {
+                //TODO:
+                System.out.println("____________");
+                System.out.println(response.body());
+                System.out.println("____________");
                 return objectMapper.readValue(response.body(), TransactionDTO.class);
 
             } else if (response.statusCode() == HttpStatus.NOT_FOUND.value()) {

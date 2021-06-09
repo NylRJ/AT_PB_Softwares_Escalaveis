@@ -52,9 +52,7 @@ public class TransactionControllerV2 {
             @ApiResponse(code = 404, message = "Recurso não encontrado")}
     )
     public Mono<TransactionDTO> save(@RequestHeader(name = "Authorization") String bearerToken, @Valid @RequestBody RequisicaoTransacaoDTO transactionDTO) {
-        System.out.println("--------------------------------------");
-        System.out.println(transactionDTO);
-        System.out.println(transactionDTO.getUui());
+
         return Mono.just(
                 kafkaSender.send(transactionDTO)
 

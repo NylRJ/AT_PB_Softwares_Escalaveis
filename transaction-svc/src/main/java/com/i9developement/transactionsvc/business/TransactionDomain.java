@@ -4,6 +4,7 @@ import com.i9developement.transactionsvc.domain.TransactionDTO;
 import com.i9developement.transactionsvc.infrastructure.TransactionBusiness;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.validation.Valid;
 import java.math.BigDecimal;
@@ -55,8 +56,9 @@ public class TransactionDomain {
     }
 
     public TransactionDTO inserirTransacao(@Valid final TransactionDTO transactionDTO) {
-
-        transactionDTO.setUui(UUID.randomUUID());
+        if (StringUtils.isEmpty(transactionDTO.getUui())){
+            transactionDTO.setUui(UUID.randomUUID());
+        }
         transactionDTO.naoAnalisada();
         criarTransacao(transactionDTO);
         final Optional<TransactionDTO> optionalTransactionDTO = buscarTransacao(transactionDTO);

@@ -23,6 +23,8 @@ import java.util.Locale;
 @EnableSwagger2WebFlux
 @EnableWebFluxSecurity
 public class TransactionProxyApplication {
+
+    public static final String YYYY_MM_DD_T_HH_MM_SS_SSSX = "yyyy-MM-dd'T'HH:mm:ss.SSSX";
     public static final Locale LOCALE = new Locale("pt",
             "br");
 
@@ -32,15 +34,15 @@ public class TransactionProxyApplication {
 
     @Bean
     @Primary
-    public ObjectMapper objectMapper(){
-
+    public ObjectMapper objectMapper() {
         var mapper = new ObjectMapper();
         var timeModule = new JavaTimeModule();
         mapper.registerModule(timeModule);
-        timeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(
+        timeModule.addDeserializer(LocalDateTime.class,new LocalDateTimeDeserializer(
                 DateTimeFormatter.
-                        ofPattern("yyyy-MM-dd HH:mm:ss",
-                                LOCALE)));
+                        ofPattern(YYYY_MM_DD_T_HH_MM_SS_SSSX, LOCALE)));
         return mapper;
     }
+
+
 }

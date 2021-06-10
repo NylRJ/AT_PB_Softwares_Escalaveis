@@ -31,23 +31,29 @@ public class TransactionDTO implements Serializable {
     @ApiModelProperty(value = "Valor da transação")
     @NotNull(message = "Informar o valor da transação")
     private BigDecimal valor;
+
     @ApiModelProperty(value = "Data/hora/minuto e segundo da transação")
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime data;
+
     @NotNull(message = "Informar a conta de origem da transação")
     @ApiModelProperty(value = "Conta de origem da transação")
     @Valid
     private Conta conta;
+
     @NotNull(message = "Informar o beneficiário da transação")
     @ApiModelProperty(value = "Beneficiário da transação")
     @Valid
     private BeneficiatioDto beneficiario;
+
     @NotNull(message = "Informar o tipo da transação")
     @ApiModelProperty(value = "Tipo de transação")
     private TipoTransacao tipoTransacao;
+
     @ApiModelProperty(value = "Código de identificação da transação")
     private UUID uui;
+
     @ApiModelProperty(value = "Situação da transação")
     private SituacaoEnum situacao;
 

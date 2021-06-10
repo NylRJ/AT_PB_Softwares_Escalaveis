@@ -20,6 +20,7 @@ public class JacksonConfiguration {
         var dateTimeFormatter = DateTimeFormatter.ISO_DATE_TIME;
         simpleModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(dateTimeFormatter));
         simpleModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(dateTimeFormatter));
+
         objectMappers.forEach(objectMapper -> objectMapper.registerModule(simpleModule));
     }
 }

@@ -7,7 +7,6 @@ import com.i9developement.transactionsvc.repository.DynamoRepository;
 import com.amazonaws.services.dynamodbv2.document.DeleteItemOutcome;
 import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.UpdateItemOutcome;
-import com.i9developement.transactionsvc.repository.PostgresRepositoy;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.sleuth.annotation.NewSpan;
@@ -30,7 +29,6 @@ public class TransactionBusiness {
 
 
     private DynamoRepository dynamoRepository;
-    private PostgresRepositoy postgresRepositoy;
     public static final int AMOUNT_TO_ADD = -1;
 
 

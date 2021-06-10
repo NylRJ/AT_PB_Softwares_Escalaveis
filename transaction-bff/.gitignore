@@ -17,12 +17,6 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
-build/
-.gradle
-.bin/
-.idea/
-.docker/
-
 ### IntelliJ IDEA ###
 .idea
 *.iws

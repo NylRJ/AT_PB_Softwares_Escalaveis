@@ -23,8 +23,8 @@ apply plugin: "org.sonarqube"
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-group = 'com.i9developement'
-version = '0.5.5-SNAPSHOT'
+group = 'com.i9development'
+version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 targetCompatibility = 11
 
@@ -54,7 +54,7 @@ jacocoTestReport {
 tasks.register("i9developement") {
     doLast {
         print 'Assessment do Moises '
-        println propCoffee
+        println propI9develop
         println rootProject
     }
 }

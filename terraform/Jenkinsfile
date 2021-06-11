@@ -1,0 +1,15 @@
+node('slave-02') {
+    checkout scm
+    stage('Init') {
+      sh 'terraform init'
+
+    }
+    stage('Plan') {
+      sh 'terraform plan'
+
+    }
+    stage('Apply') {
+      sh 'terraform apply -var machine_type=${MACHINE_TYPE} -auto-approve -backup=/home/channelcoffeeandit/terraform/terraform_apply${BUILD_NUMBER}'
+
+    }
+  }

@@ -1,0 +1,10 @@
+- hosts: web
+  tasks:
+    - name: stop jenkins
+      service:
+        name: jenkins
+        state: stopped
+      become: yes
+    - name: ensure jenkins is not installed
+      apt: name=jenkins state=absent
+      become: yes

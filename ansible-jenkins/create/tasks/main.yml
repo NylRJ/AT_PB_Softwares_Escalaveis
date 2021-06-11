@@ -1,0 +1,37 @@
+- name: Instalar wget
+  apt:
+    name:  wget
+    state: fixed
+- name: Instalar sudo
+  apt:
+    name:  sudo
+    state: fixed
+- name: Copia do Arquivo de repositório.
+  copy:
+    src: /home/love/IdeaProjects/ansible-jenkins/create/files/repository.sh
+    dest: /tmp/repository.sh
+  become: yes
+- name: Executa a alteração da permissão do arquivo.
+  shell: chmod +x /tmp/repository.sh
+  become: yes
+- name: update default-jdk
+  apt:
+    name:  default-jdk
+    state: fixed
+- name: Executa a adição do reposítório do Jenkins.
+  shell: /tmp/repository.sh
+  become: yes
+- name: Atualizar os pacotes.
+  become: true
+  apt:
+    update_cache: yes
+- name: update package
+  apt:
+    name:  jenkins
+    state: fixed
+  become: true
+- name: restart jenkins
+  service:
+    name: jenkins
+    state: restarted
+  become: yes

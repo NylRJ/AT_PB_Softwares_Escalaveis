@@ -122,7 +122,6 @@ public class TransactionController {
     public Mono<TransactionDTO> findById(@PathVariable("id") String uuid, @RequestHeader(name = "content-type", defaultValue = MediaType.APPLICATION_JSON_VALUE) String contentType) {
         var item = transactionBusiness.retrieveItem(uuid);
         if (item.isPresent()) {
-            var tt = Mono.just(item.get());
             return Mono.just(item.get());
         }
         throw new NotFoundResponse("Transação não encontrada");

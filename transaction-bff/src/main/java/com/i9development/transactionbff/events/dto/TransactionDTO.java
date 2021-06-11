@@ -33,7 +33,7 @@ public class TransactionDTO implements Serializable {
     private BigDecimal valor;
 
     @ApiModelProperty(value = "Data/hora/minuto e segundo da transação")
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime data;
 

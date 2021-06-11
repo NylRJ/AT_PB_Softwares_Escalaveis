@@ -18,6 +18,7 @@ public class RequisicaoTransacaoDTO extends TransactionDTO {
 
     @JsonIgnore
     private SituacaoEnum situacao;
+
     @JsonIgnore
     private LocalDateTime data;
 

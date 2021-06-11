@@ -24,7 +24,6 @@ import java.util.Locale;
 @EnableWebFluxSecurity
 public class TransactionProxyApplication {
 
-    public static final String YYYY_MM_DD_T_HH_MM_SS_SSSX = "yyyy-MM-dd'T'HH:mm:ss.SSSX";
     public static final Locale LOCALE = new Locale("pt",
             "br");
 
@@ -40,7 +39,7 @@ public class TransactionProxyApplication {
         mapper.registerModule(timeModule);
         timeModule.addDeserializer(LocalDateTime.class,new LocalDateTimeDeserializer(
                 DateTimeFormatter.
-                        ofPattern(YYYY_MM_DD_T_HH_MM_SS_SSSX, LOCALE)));
+                        ofPattern("yyyy-MM-dd HH:mm:ss", LOCALE)));
         return mapper;
     }
 

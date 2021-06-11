@@ -34,7 +34,7 @@ public class LimiteApplication {
     public int maximumSize;
     @Value("${spring.cache.allowNullValues}")
     public boolean allowNullValues;
-    public static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd'T'HH:mm:ss.SSSX";
+    public static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
     public static final Locale LOCALE = new Locale("pt", "br");
 
     public static void main(String[] args) {

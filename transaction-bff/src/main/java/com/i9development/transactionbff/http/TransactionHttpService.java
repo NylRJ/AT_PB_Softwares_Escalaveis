@@ -71,8 +71,11 @@ public class TransactionHttpService {
             var response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             log.info("response status code {}", response.statusCode());
             if (response.statusCode() == HttpStatus.OK.value()) {
-
-                return objectMapper.readValue(response.body(), TransactionDTO.class);
+                var json = response.body();
+                System.out.println("--------------------------");
+                System.out.println(json);
+                System.out.println("--------------------------");
+                return objectMapper.readValue(json, TransactionDTO.class);
 
             } else if (response.statusCode() == HttpStatus.NOT_FOUND.value()) {
                 throw new NotFoundException(String.format("Não foi possivel encontrar a transação %s", uuid));

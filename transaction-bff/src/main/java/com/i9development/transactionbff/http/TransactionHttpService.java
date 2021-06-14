@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.i9development.transactionbff.events.AlteracaoSituacaoDTO;
 import com.i9development.transactionbff.events.dto.TransactionDTO;
+import com.i9development.transactionbff.events.dto.TransactionDTO2;
 import com.i9development.transactionbff.events.entity.valueObject.SituacaoEnum;
 import com.i9development.transactionbff.exception.InfrastructureException;
 import com.i9development.transactionbff.exception.NotFoundException;
@@ -55,7 +56,7 @@ public class TransactionHttpService {
     }
 
     @Cacheable(value = "transactions", key = "#uuid")
-    public TransactionDTO findById(String uuid) {
+    public TransactionDTO2 findById(String uuid) {
         var urlTransaction = String.format(urlTransactionById, uuid);
         log.info("Buscando uuid - {} de {}", uuid, urlTransaction);
 
@@ -75,7 +76,7 @@ public class TransactionHttpService {
                 System.out.println("--------------------------");
                 System.out.println(json);
                 System.out.println("--------------------------");
-                return objectMapper.readValue(json, TransactionDTO.class);
+                return objectMapper.readValue(json, TransactionDTO2.class);
 
             } else if (response.statusCode() == HttpStatus.NOT_FOUND.value()) {
                 throw new NotFoundException(String.format("Não foi possivel encontrar a transação %s", uuid));

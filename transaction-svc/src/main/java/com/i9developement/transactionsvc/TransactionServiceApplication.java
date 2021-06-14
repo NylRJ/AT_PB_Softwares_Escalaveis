@@ -26,7 +26,7 @@ import java.util.Locale;
 @EnableSwagger2WebFlux
 public class TransactionServiceApplication {
 
-    public static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
+    public static final String YYYY_MM_DD_T_HH_MM_SS = "yyyy-MM-dd'T'HH:mm:ss";
     public static final Locale LOCALE = new Locale("pt",
             "br");
 
@@ -42,7 +42,7 @@ public class TransactionServiceApplication {
         var timeModule = new JavaTimeModule();
         mapper.registerModule(timeModule);
         timeModule.addDeserializer(LocalDateTime.class,
-                new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(YYYY_MM_DD_HH_MM_SS, LOCALE)));
+                new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(YYYY_MM_DD_T_HH_MM_SS, LOCALE)));
         return mapper;
     }
 

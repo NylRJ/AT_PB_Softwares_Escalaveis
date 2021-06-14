@@ -67,7 +67,7 @@ public class DynamoRepository implements DynamoTable, InsertableItem<Transaction
         beneficiario.setNomeFavorecido(item.getString(NOME_FAVORECIDO));
         transacaoDto.setBeneficiario(beneficiario);
         System.out.println("-------------------------------------------------------------------------");
-        System.out.println(transacaoDto);
+        System.out.println(transacaoDto.getSituacao());
         System.out.println("-------------------------------------------------------------------------");
         return transacaoDto;
     };

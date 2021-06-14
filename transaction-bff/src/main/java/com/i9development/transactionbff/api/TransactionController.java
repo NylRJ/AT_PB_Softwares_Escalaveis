@@ -3,6 +3,7 @@ package com.i9development.transactionbff.api;
 import com.i9development.transactionbff.events.AlteracaoSituacaoDTO;
 import com.i9development.transactionbff.events.dto.RequisicaoTransacaoDTO;
 import com.i9development.transactionbff.events.dto.TransactionDTO;
+import com.i9development.transactionbff.events.dto.TransactionDTO2;
 import com.i9development.transactionbff.events.kafka.KafkaSender;
 import com.i9development.transactionbff.exception.InfrastructureException;
 import com.i9development.transactionbff.http.TransactionHttpService;
@@ -115,7 +116,7 @@ public class TransactionController {
             @ApiResponse(code = 404, message = "Recurso não encontrado")})
     @ApiImplicitParams(value = {@ApiImplicitParam(name = "id", required = true)})
     @GetMapping(value = "/transactions/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<TransactionDTO> findById(@RequestHeader(name = "Authorization") String bearerToken, @PathVariable("id") String uuid) {
+    public Mono<TransactionDTO2> findById(@RequestHeader(name = "Authorization") String bearerToken, @PathVariable("id") String uuid) {
         return Mono.just(transactionHttpService.findById(uuid));
     }
 

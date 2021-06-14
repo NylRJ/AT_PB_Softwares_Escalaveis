@@ -39,7 +39,7 @@ public class TransactionProxyApplication {
         mapper.registerModule(timeModule);
         timeModule.addDeserializer(LocalDateTime.class,new LocalDateTimeDeserializer(
                 DateTimeFormatter.
-                        ofPattern("yyyy-MM-dd HH:mm:ss", LOCALE)));
+                        ofPattern("yyyy-MM-dd'T'HH:mm:ss", LOCALE)));
         return mapper;
     }
 

@@ -33,7 +33,7 @@ public class TransactionDTO implements Serializable {
     private BigDecimal valor;
 
     @ApiModelProperty(value = "Data/hora/minuto e segundo da transação")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime data;
 
@@ -57,9 +57,21 @@ public class TransactionDTO implements Serializable {
     @ApiModelProperty(value = "Situação da transação")
     private SituacaoEnum situacao;
 
+
     public void naoAnalisada() {
         setSituacao(SituacaoEnum.NAO_ANALISADA);
     }
 
+    public void analisada() {
+        setSituacao(SituacaoEnum.ANALISADA);
+    }
+
+    public void suspeitaFraude() {
+        setSituacao(SituacaoEnum.EM_SUSPEITA_FRAUDE);
+    }
+
+    public void analiseHumana() {
+        setSituacao(SituacaoEnum.EM_ANALISE_HUMANA);
+    }
 
 }

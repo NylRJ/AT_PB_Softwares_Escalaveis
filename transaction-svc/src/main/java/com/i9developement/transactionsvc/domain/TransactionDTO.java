@@ -1,11 +1,14 @@
 package com.i9developement.transactionsvc.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.i9developement.transactionsvc.TransactionServiceApplication;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -27,6 +30,8 @@ public class TransactionDTO implements Serializable {
     private BigDecimal valor;
     @ApiModelProperty(value = "Data da transação", required = true)
     @NotNull
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime data;
     @NotNull
     private Conta conta;

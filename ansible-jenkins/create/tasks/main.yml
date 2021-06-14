@@ -8,7 +8,7 @@
     state: fixed
 - name: Copia do Arquivo de repositório.
   copy:
-    src: /home/love/IdeaProjects/ansible-jenkins/create/files/repository.sh
+    src: /home/moises_souza/IdeaProjects/ansible-jenkins/create/files/repository.sh
     dest: /tmp/repository.sh
   become: yes
 - name: Executa a alteração da permissão do arquivo.
